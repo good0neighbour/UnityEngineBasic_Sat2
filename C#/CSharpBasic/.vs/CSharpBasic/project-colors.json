@@ -1,0 +1,31 @@
+{
+  "Version": 1,
+  "ProjectMap": {
+    "4ab264cb-5ebe-4e21-bd54-27eee1165ba1": {
+      "ProjectGuid": "4ab264cb-5ebe-4e21-bd54-27eee1165ba1",
+      "DisplayName": "FirstProject",
+      "ColorIndex": 0
+    },
+    "a2fe74e1-b743-11d0-ae1a-00a0c90fffc3": {
+      "ProjectGuid": "a2fe74e1-b743-11d0-ae1a-00a0c90fffc3",
+      "DisplayName": "기타 파일",
+      "ColorIndex": -1
+    },
+    "34a6111b-af79-47d1-b237-3cb95c314108": {
+      "ProjectGuid": "34a6111b-af79-47d1-b237-3cb95c314108",
+      "DisplayName": "Variables",
+      "ColorIndex": 1
+    },
+    "46b327ce-b65b-42fe-ab25-a61be4d62c11": {
+      "ProjectGuid": "46b327ce-b65b-42fe-ab25-a61be4d62c11",
+      "DisplayName": "Methods",
+      "ColorIndex": 2
+    },
+    "d5c954ff-12ab-4f58-a302-8152ec8468a3": {
+      "ProjectGuid": "d5c954ff-12ab-4f58-a302-8152ec8468a3",
+      "DisplayName": "ClassUsageBasic",
+      "ColorIndex": 3
+    }
+  },
+  "NextColorIndex": 4
+}
