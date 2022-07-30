@@ -2,7 +2,7 @@
 
 namespace ClassUsageBasic
 {
-    internal class Program
+    internal class ClassUsageBasic
     {
         static void Main(string[] args)
         {
@@ -19,6 +19,11 @@ namespace ClassUsageBasic
         private string name;
 
         public SwordMan()
+        {
+
+        }
+
+        ~SwordMan()
         {
 
         }

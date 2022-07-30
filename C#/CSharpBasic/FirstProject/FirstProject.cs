@@ -2,7 +2,7 @@
 
 namespace FirstProject
 {
-    internal class Program
+    internal class FirstProject
     {
         static void Main(string[] args)
         {
