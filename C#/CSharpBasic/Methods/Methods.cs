@@ -2,7 +2,7 @@
 
 namespace Methods
 {
-    internal class Program
+    internal class Methods
     {
         static void Main(string[] args)
         {
