@@ -25,7 +25,37 @@
       "ProjectGuid": "d5c954ff-12ab-4f58-a302-8152ec8468a3",
       "DisplayName": "ClassUsageBasic",
       "ColorIndex": 3
+    },
+    "7e1f146c-d1b0-43f8-a645-0bf74ba33f03": {
+      "ProjectGuid": "7e1f146c-d1b0-43f8-a645-0bf74ba33f03",
+      "DisplayName": "Example01_ClassObjectInstance",
+      "ColorIndex": 4
+    },
+    "b505432d-37b6-408c-87c3-406bc30b6a68": {
+      "ProjectGuid": "b505432d-37b6-408c-87c3-406bc30b6a68",
+      "DisplayName": "Statement_If",
+      "ColorIndex": 5
+    },
+    "efedc985-9110-4e5c-9009-340ea5bfc6dc": {
+      "ProjectGuid": "efedc985-9110-4e5c-9009-340ea5bfc6dc",
+      "DisplayName": "Operators",
+      "ColorIndex": 6
+    },
+    "3365a1ba-419c-408d-acfa-27ce9422277c": {
+      "ProjectGuid": "3365a1ba-419c-408d-acfa-27ce9422277c",
+      "DisplayName": "Array",
+      "ColorIndex": 7
+    },
+    "32593847-d10d-47a5-a679-4855e8ee0894": {
+      "ProjectGuid": "32593847-d10d-47a5-a679-4855e8ee0894",
+      "DisplayName": "Array2Dimension",
+      "ColorIndex": 8
+    },
+    "91bf4966-9172-4720-8b87-4f1de83021be": {
+      "ProjectGuid": "91bf4966-9172-4720-8b87-4f1de83021be",
+      "DisplayName": "Statement_Loops",
+      "ColorIndex": 9
     }
   },
-  "NextColorIndex": 4
+  "NextColorIndex": 10
 }
