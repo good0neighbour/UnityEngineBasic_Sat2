@@ -1,0 +1,15 @@
+C:\Users\User\Documents\GitHub\UnityEngineBasic_Sat2\C#\CSharpBasic\ClassInstanceAndPolymorphism\bin\Debug\net5.0\ClassInterinstanceAndPolymorphism.exe
+C:\Users\User\Documents\GitHub\UnityEngineBasic_Sat2\C#\CSharpBasic\ClassInstanceAndPolymorphism\bin\Debug\net5.0\ClassInterinstanceAndPolymorphism.deps.json
+C:\Users\User\Documents\GitHub\UnityEngineBasic_Sat2\C#\CSharpBasic\ClassInstanceAndPolymorphism\bin\Debug\net5.0\ClassInterinstanceAndPolymorphism.runtimeconfig.json
+C:\Users\User\Documents\GitHub\UnityEngineBasic_Sat2\C#\CSharpBasic\ClassInstanceAndPolymorphism\bin\Debug\net5.0\ClassInterinstanceAndPolymorphism.runtimeconfig.dev.json
+C:\Users\User\Documents\GitHub\UnityEngineBasic_Sat2\C#\CSharpBasic\ClassInstanceAndPolymorphism\bin\Debug\net5.0\ClassInterinstanceAndPolymorphism.dll
+C:\Users\User\Documents\GitHub\UnityEngineBasic_Sat2\C#\CSharpBasic\ClassInstanceAndPolymorphism\bin\Debug\net5.0\ref\ClassInterinstanceAndPolymorphism.dll
+C:\Users\User\Documents\GitHub\UnityEngineBasic_Sat2\C#\CSharpBasic\ClassInstanceAndPolymorphism\bin\Debug\net5.0\ClassInterinstanceAndPolymorphism.pdb
+C:\Users\User\Documents\GitHub\UnityEngineBasic_Sat2\C#\CSharpBasic\ClassInstanceAndPolymorphism\obj\Debug\net5.0\ClassInterinstanceAndPolymorphism.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\User\Documents\GitHub\UnityEngineBasic_Sat2\C#\CSharpBasic\ClassInstanceAndPolymorphism\obj\Debug\net5.0\ClassInterinstanceAndPolymorphism.AssemblyInfoInputs.cache
+C:\Users\User\Documents\GitHub\UnityEngineBasic_Sat2\C#\CSharpBasic\ClassInstanceAndPolymorphism\obj\Debug\net5.0\ClassInterinstanceAndPolymorphism.AssemblyInfo.cs
+C:\Users\User\Documents\GitHub\UnityEngineBasic_Sat2\C#\CSharpBasic\ClassInstanceAndPolymorphism\obj\Debug\net5.0\ClassInterinstanceAndPolymorphism.csproj.CoreCompileInputs.cache
+C:\Users\User\Documents\GitHub\UnityEngineBasic_Sat2\C#\CSharpBasic\ClassInstanceAndPolymorphism\obj\Debug\net5.0\ClassInterinstanceAndPolymorphism.dll
+C:\Users\User\Documents\GitHub\UnityEngineBasic_Sat2\C#\CSharpBasic\ClassInstanceAndPolymorphism\obj\Debug\net5.0\ref\ClassInterinstanceAndPolymorphism.dll
+C:\Users\User\Documents\GitHub\UnityEngineBasic_Sat2\C#\CSharpBasic\ClassInstanceAndPolymorphism\obj\Debug\net5.0\ClassInterinstanceAndPolymorphism.pdb
+C:\Users\User\Documents\GitHub\UnityEngineBasic_Sat2\C#\CSharpBasic\ClassInstanceAndPolymorphism\obj\Debug\net5.0\ClassInterinstanceAndPolymorphism.genruntimeconfig.cache
