@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\User\\Documents\\GitHub\\UnityEngineBasic_Sat2\\C#\\CSharpBasic\\Example01\\Example01_ClassObjectInstance.csproj": {}
+    "C:\\Users\\User\\Desktop\\Github\\UnityEngineBasic_Sat2\\C#\\CSharpBasic\\Example01\\Example01_ClassObjectInstance.csproj": {}
   },
   "projects": {
-    "C:\\Users\\User\\Documents\\GitHub\\UnityEngineBasic_Sat2\\C#\\CSharpBasic\\Example01\\Example01_ClassObjectInstance.csproj": {
+    "C:\\Users\\User\\Desktop\\Github\\UnityEngineBasic_Sat2\\C#\\CSharpBasic\\Example01\\Example01_ClassObjectInstance.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\User\\Documents\\GitHub\\UnityEngineBasic_Sat2\\C#\\CSharpBasic\\Example01\\Example01_ClassObjectInstance.csproj",
+        "projectUniqueName": "C:\\Users\\User\\Desktop\\Github\\UnityEngineBasic_Sat2\\C#\\CSharpBasic\\Example01\\Example01_ClassObjectInstance.csproj",
         "projectName": "Example01_ClassObjectInstance",
-        "projectPath": "C:\\Users\\User\\Documents\\GitHub\\UnityEngineBasic_Sat2\\C#\\CSharpBasic\\Example01\\Example01_ClassObjectInstance.csproj",
+        "projectPath": "C:\\Users\\User\\Desktop\\Github\\UnityEngineBasic_Sat2\\C#\\CSharpBasic\\Example01\\Example01_ClassObjectInstance.csproj",
         "packagesPath": "C:\\Users\\User\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\User\\Documents\\GitHub\\UnityEngineBasic_Sat2\\C#\\CSharpBasic\\Example01\\obj\\",
+        "outputPath": "C:\\Users\\User\\Desktop\\Github\\UnityEngineBasic_Sat2\\C#\\CSharpBasic\\Example01\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\User\\AppData\\Roaming\\NuGet\\NuGet.Config",
@@ -49,6 +49,12 @@
           ],
           "assetTargetFallback": true,
           "warn": true,
+          "downloadDependencies": [
+            {
+              "name": "Microsoft.NETCore.App.Host.win-x64",
+              "version": "[5.0.13, 5.0.13]"
+            }
+          ],
           "frameworkReferences": {
             "Microsoft.NETCore.App": {
               "privateAssets": "all"

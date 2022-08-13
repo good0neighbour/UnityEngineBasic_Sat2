@@ -1,0 +1,10 @@
+{
+  "version": 2,
+  "dgSpecHash": "E/M+epqSqJarTrCE3gey3cSieBeAq43LwnAGDlvcyD0J31FEI6IFlO46texPAvK9KHUWBiSQoO9U49rli3Jx5g==",
+  "success": true,
+  "projectFilePath": "C:\\Users\\User\\Desktop\\Github\\UnityEngineBasic_Sat2\\C#\\CSharpBasic\\Collections\\Collections.csproj",
+  "expectedPackageFiles": [
+    "C:\\Users\\User\\.nuget\\packages\\microsoft.netcore.app.host.win-x64\\5.0.13\\microsoft.netcore.app.host.win-x64.5.0.13.nupkg.sha512"
+  ],
+  "logs": []
+}

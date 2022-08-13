@@ -1,0 +1,10 @@
+{
+  "version": 2,
+  "dgSpecHash": "nd+eD1EWtrVMDmAEJktBDmJ7pWvbhhrk7jMUYgTrX4fg1w02rJhXDT9l5gS/kx5MG9De/kDc+UdhfFs9RBD7ng==",
+  "success": true,
+  "projectFilePath": "C:\\Users\\User\\Desktop\\Github\\UnityEngineBasic_Sat2\\C#\\CSharpBasic\\Example05_MyHashTable\\Example05_MyHashTable.csproj",
+  "expectedPackageFiles": [
+    "C:\\Users\\User\\.nuget\\packages\\microsoft.netcore.app.host.win-x64\\5.0.13\\microsoft.netcore.app.host.win-x64.5.0.13.nupkg.sha512"
+  ],
+  "logs": []
+}

@@ -1,8 +1,10 @@
 {
   "version": 2,
-  "dgSpecHash": "5tlt2pxwdEFlLKj8RYCaliGcu4Zim8mTmV822adYe/Urlyz0Y6GRK14gAjI7y9ARH3jvWr77hSFZLaHkOemnJA==",
+  "dgSpecHash": "ofaOdSkvN1P1yp2HgqsqAjbA4/jIaU/GXiFvIUv2kpSDEaw12a4fTASYb9gTGc8r10HG6aHdxCYpnKcrtM2SqQ==",
   "success": true,
-  "projectFilePath": "C:\\Users\\User\\Documents\\GitHub\\UnityEngineBasic_Sat2\\C#\\CSharpBasic\\Variables\\Variables.csproj",
-  "expectedPackageFiles": [],
+  "projectFilePath": "C:\\Users\\User\\Desktop\\Github\\UnityEngineBasic_Sat2\\C#\\CSharpBasic\\Variables\\Variables.csproj",
+  "expectedPackageFiles": [
+    "C:\\Users\\User\\.nuget\\packages\\microsoft.netcore.app.host.win-x64\\5.0.13\\microsoft.netcore.app.host.win-x64.5.0.13.nupkg.sha512"
+  ],
   "logs": []
 }
