@@ -55,7 +55,57 @@
       "ProjectGuid": "91bf4966-9172-4720-8b87-4f1de83021be",
       "DisplayName": "Statement_Loops",
       "ColorIndex": 9
+    },
+    "876a2233-6527-4e90-88c3-26c68f9b720c": {
+      "ProjectGuid": "876a2233-6527-4e90-88c3-26c68f9b720c",
+      "DisplayName": "ClassInterinstanceAndPolymorphism",
+      "ColorIndex": 10
+    },
+    "7d411c0d-42c0-459e-b2cf-268fd9e28ee0": {
+      "ProjectGuid": "7d411c0d-42c0-459e-b2cf-268fd9e28ee0",
+      "DisplayName": "Example02_HorseRacing",
+      "ColorIndex": 11
+    },
+    "1b63e955-aa29-449e-a56a-2dbb39cbaada": {
+      "ProjectGuid": "1b63e955-aa29-449e-a56a-2dbb39cbaada",
+      "DisplayName": "Structure",
+      "ColorIndex": 12
+    },
+    "b8461348-fe2a-4ac6-ad32-9879efb51549": {
+      "ProjectGuid": "b8461348-fe2a-4ac6-ad32-9879efb51549",
+      "DisplayName": "Statement_SwitchCase",
+      "ColorIndex": 13
+    },
+    "28a8df47-707a-4c70-a04a-a4cee29cc902": {
+      "ProjectGuid": "28a8df47-707a-4c70-a04a-a4cee29cc902",
+      "DisplayName": "Collections",
+      "ColorIndex": 14
+    },
+    "babcf95d-1e55-46ee-864e-07dc87d61f77": {
+      "ProjectGuid": "babcf95d-1e55-46ee-864e-07dc87d61f77",
+      "DisplayName": "Example03_DynamicArray",
+      "ColorIndex": 15
+    },
+    "2de754a6-3eac-408f-a454-08312b96c0eb": {
+      "ProjectGuid": "2de754a6-3eac-408f-a454-08312b96c0eb",
+      "DisplayName": "Example04_MYLinkedList",
+      "ColorIndex": 0
+    },
+    "c5ca9afc-7166-4fbd-a552-879a5100b4ca": {
+      "ProjectGuid": "c5ca9afc-7166-4fbd-a552-879a5100b4ca",
+      "DisplayName": "Example05_MyHashTable",
+      "ColorIndex": 1
+    },
+    "8768ebf2-8115-45af-8337-277212c7aad6": {
+      "ProjectGuid": "8768ebf2-8115-45af-8337-277212c7aad6",
+      "DisplayName": "Example06_RollADice",
+      "ColorIndex": 2
+    },
+    "8fe85e76-b500-452c-8daa-1802f1be9e3d": {
+      "ProjectGuid": "8fe85e76-b500-452c-8daa-1802f1be9e3d",
+      "DisplayName": "Delegate",
+      "ColorIndex": 3
     }
   },
-  "NextColorIndex": 10
+  "NextColorIndex": 4
 }
