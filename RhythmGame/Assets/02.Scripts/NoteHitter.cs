@@ -3,6 +3,9 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+/// <summary>
+/// 노트 타건 & 판정
+/// </summary>
 public class NoteHitter : MonoBehaviour
 {
     public KeyCode Key;
@@ -10,6 +13,7 @@ public class NoteHitter : MonoBehaviour
     private SpriteRenderer _spriteRenderer;
     private Color _colorOrigin;
     [SerializeField] private Color _colorPressed;
+    [SerializeField] private ParticleSystem _hitEffect;
 
     private void Awake()
     {
@@ -29,26 +33,39 @@ public class NoteHitter : MonoBehaviour
             SetColorOrigin();
         }
     }
+
+    /// <summary>
+    /// 노트 타건 판정 범위 내의 노트 감지 후
+    /// 가장 가까운 노트에 히트판정함
+    /// </summary>
     private void HitNote()
     {
         HitType hitType = HitType.Bad;
         List<Collider2D> overlaps = Physics2D.OverlapBoxAll(point: transform.position,
                                                             size: new Vector2(transform.lossyScale.x / 2.0f,
-                                                                              transform.lossyScale.y * Constant.HIT_JUDGE_RANGE_MISS),
+                                                                              transform.lossyScale.y * Constant.HIT_JUDGE_RANGE_BAD),
                                                             angle: 0.0f,
                                                             layerMask: _noteLayer).ToList();
         if (overlaps.Count > 0)
         {
-            List<Collider2D> overlapsOrdered = overlaps.OrderBy(x => Mathf.Abs(x.transform.position.y - transform.position.y)).ToList();
+            // 오버랩된 모든 콜라이더 가까운 순으로 오름차순 정렬
+            IOrderedEnumerable<Collider2D> collidersFiltered = overlaps.OrderBy(x => Mathf.Abs(x.transform.position.y - transform.position.y));
+            
+            // 가장 가까운 콜라이더에 대해서 떨어진 거리 구하기
+            float distance = Mathf.Abs(collidersFiltered.First().transform.position.y - transform.position.y);
 
-            float distance = Mathf.Abs(overlapsOrdered[0].transform.position.y - transform.position.y);
-            if      (distance < Constant.HIT_JUDGE_RANGE_COOL) hitType = HitType.Cool;
-            else if (distance < Constant.HIT_JUDGE_RANGE_GREAT) hitType = HitType.Great;
-            else if (distance < Constant.HIT_JUDGE_RANGE_GOOD) hitType = HitType.Good;
-            else if (distance < Constant.HIT_JUDGE_RANGE_MISS) hitType = HitType.Miss;
+            // 거리에 따른 히트 판정
+            if      (distance < Constant.HIT_JUDGE_RANGE_COOL / 2.0f) hitType = HitType.Cool;
+            else if (distance < Constant.HIT_JUDGE_RANGE_GREAT / 2.0f) hitType = HitType.Great;
+            else if (distance < Constant.HIT_JUDGE_RANGE_GOOD / 2.0f) hitType = HitType.Good;
+            else if (distance < Constant.HIT_JUDGE_RANGE_MISS / 2.0f) hitType = HitType.Miss;
+            else if (distance < Constant.HIT_JUDGE_RANGE_BAD / 2.0f) hitType = HitType.Bad;
 
-            overlapsOrdered[0].gameObject.GetComponent<Note>().Hit(hitType);
-            Destroy(overlapsOrdered[0].gameObject);
+            // 판정된 노트 히트하기
+            GameObject effect = Instantiate(_hitEffect.gameObject, transform.position, Quaternion.identity);
+            Destroy(effect, _hitEffect.main.duration + _hitEffect.main.startLifetime.constantMax);
+            collidersFiltered.First().gameObject.GetComponent<Note>().Hit(hitType);
+            Destroy(collidersFiltered.First().gameObject);
         }
     }
     private void SetColorPressed()

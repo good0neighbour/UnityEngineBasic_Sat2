@@ -19,18 +19,29 @@ public class Note : MonoBehaviour
         switch (hitType)
         {
             case HitType.Bad:
+                ScoringText.Instance.Score += Constant.SCORE_BAD;
+                GameStatus.CurrentCombo = 0;
                 break;
             case HitType.Miss:
+                ScoringText.Instance.Score += Constant.SCORE_MISS;
+                GameStatus.CurrentCombo = 0;
                 break;
             case HitType.Good:
+                ScoringText.Instance.Score += Constant.SCORE_GOOD;
+                GameStatus.CurrentCombo++;
                 break;
             case HitType.Great:
+                ScoringText.Instance.Score += Constant.SCORE_GREAT;
+                GameStatus.CurrentCombo++;
                 break;
             case HitType.Cool:
+                ScoringText.Instance.Score += Constant.SCORE_COOL;
+                GameStatus.CurrentCombo++;
                 break;
             default:
                 break;
         }
+        PopUpTextManager.Instance.PopUp(hitType);
     }
 
     private void FixedUpdate()
@@ -39,6 +50,6 @@ public class Note : MonoBehaviour
     }
     private void Move()
     {
-        transform.Translate(Vector2.down * Time.fixedDeltaTime);
+        transform.Translate(Vector2.down * NoteManager.NoteSpeedScale * Time.fixedDeltaTime);
     }
 }

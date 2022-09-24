@@ -9,6 +9,7 @@ public class SongSelector : MonoBehaviour
     public string SelectedSongName;
     public VideoClip Clip;
     public SongData Data;
+    public bool IsDataLoaded => Data != null;
     public void Select(string songName)
     {
         SelectedSongName = songName;
