@@ -1,20 +1,33 @@
-﻿public class StateFall : StateBase
+using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
+
+public class StateCrouch : StateBase
 {
-    private GroundDetector _groundDetector;
-    public StateFall(StateMachine.StateType machineType, StateMachine machine)
+    private CapsuleCollider2D _col;
+    private Vector2 _colOffsetOrigin;
+    private Vector2 _colSizeOrigin;
+    private Vector2 _colOffsetCrouch = new Vector2(0.0f, 0.07f);
+    private Vector2 _colSizeCrouch = new Vector2(0.15f, 0.15f);
+    public StateCrouch(StateMachine.StateType machineType, StateMachine machine)
         : base(machineType, machine)
     {
-        _groundDetector = machine.GetComponentInChildren<GroundDetector>();
+        _col = machine.GetComponent<CapsuleCollider2D>();
+        _colOffsetOrigin = _col.offset;
+        _colSizeOrigin = _col.size;
     }
 
-    public override bool IsExcecuteOK => _groundDetector.IsDetected == false &&
-                                         Machine.Current != StateMachine.StateType.Attack;
+    public override bool IsExcecuteOK => Machine.Current == StateMachine.StateType.Idle ||
+                                         Machine.Current == StateMachine.StateType.Move;
 
     public override void Execute()
     {
         Current = IState.Commands.Prepare;
         Machine.IsDirectionChangable = true;
         Machine.IsMovable = false;
+        Machine.StopMove();
+        _col.offset = _colOffsetCrouch;
+        _col.size = _colSizeCrouch;
     }
 
     public override void FixedUpdate()
@@ -25,11 +38,8 @@
     public override void ForceStop()
     {
         Current = IState.Commands.Idle;
-    }
-
-    public override void MoveNext()
-    {
-        Current++;
+        _col.offset = _colOffsetOrigin;
+        _col.size = _colSizeOrigin;
     }
 
     public override StateMachine.StateType Update()
@@ -42,7 +52,7 @@
                 break;
             case IState.Commands.Prepare:
                 {
-                    AnimationManager.Play("Fall");
+                    AnimationManager.Play("Crouch");
                     MoveNext();
                 }
                 break;
@@ -53,8 +63,10 @@
                 break;
             case IState.Commands.OnAction:
                 {
-                    if (_groundDetector.IsDetected)
+                    if (Input.GetKey(KeyCode.DownArrow) == false)
+                    {
                         MoveNext();
+                    }
                 }
                 break;
             case IState.Commands.Finish:
