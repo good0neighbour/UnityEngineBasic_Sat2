@@ -1,5 +1,4 @@
-using System.Collections;
-using System.Collections.Generic;
+using System;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -23,9 +22,20 @@ public class Enemy : MonoBehaviour
     }
     [SerializeField] private Slider _hpBar;
     [SerializeField] private int _hpMax;
+    private EnemyController _controller;
+
+    public void Hurt(int damage)
+    {
+        Hp -= damage;
+        if (Hp > 0)
+            _controller.ChangeState(EnemyController.States.Hurt);
+        else
+            _controller.ChangeState(EnemyController.States.Die);
+    }
 
     private void Awake()
     {
         Hp = _hpMax;
+        _controller = GetComponent<EnemyController>();
     }
 }

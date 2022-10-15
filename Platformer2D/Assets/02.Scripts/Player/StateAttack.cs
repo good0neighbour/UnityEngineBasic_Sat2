@@ -60,7 +60,7 @@ public class StateAttack : StateBase
 
                         if (hit.collider != null)
                         {
-                            hit.collider.GetComponent<Enemy>().Hp -= Character.ATK;
+                            hit.collider.GetComponent<Enemy>().Hurt(Character.ATK);
                             hit.collider.GetComponent<EnemyController>().Knockback(Machine.Direction);
                         }
 
