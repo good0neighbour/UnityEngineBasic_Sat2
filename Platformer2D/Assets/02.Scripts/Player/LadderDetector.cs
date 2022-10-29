@@ -6,15 +6,19 @@ public class LadderDetector : MonoBehaviour
 {
     public bool CanGoUp, CanGoDown;
 
-    public Vector2 GoUpStartPos => new Vector2(BottomPos.x, _rb.position.y + _col.offset.y);
-    public Vector2 GoDownStartPos => new Vector2(TopPos.x, TopPos.y - _detectOffset - _col.size.y / 4.0f);
-    public Vector2 GoUpEndPos => new Vector2(TopPos.x, TopPos.y - _detectOffset);
-    public Vector2 GoDownEndPos => new Vector2(BottomPos.x, BottomPos.y - _col.offset.y);
+    public Vector2 UpBottomStartPos => new Vector2(UpBottomPos.x, UpBottomPos.y + _col.offset.y);
+    public Vector2 UpTopStartPos => new Vector2(UpTopPos.x, UpTopPos.y - _detectOffset);
+    public Vector2 DownBottomStartPos => new Vector2(DownBottomPos.x, DownBottomPos.y + _col.offset.y);
+    public Vector2 DownTopStartPos => new Vector2(DownTopPos.x, DownTopPos.y - _detectOffset);
+    public Vector2 UpTopEndPos => new Vector2(UpTopPos.x, UpTopPos.y - _detectOffset);
+    public Vector2 UpBottomEndPos => new Vector2(UpBottomPos.x, UpBottomPos.y - _col.offset.y);
+    public Vector2 DownTopEndPos => new Vector2(DownTopPos.x, DownTopPos.y - _detectOffset);
+    public Vector2 DownBottomEndPos => new Vector2(DownBottomPos.x, DownBottomPos.y - _col.offset.y);
 
     private CapsuleCollider2D _col;
     private Rigidbody2D _rb;
     [SerializeField] private LayerMask _ladderLayer;
-    public Vector2 TopPos, BottomPos;
+    public Vector2 UpTopPos, UpBottomPos, DownTopPos, DownBottomPos;
     private float _detectOffset = 0.05f;
     private Collider2D _ladderUp;
     private Collider2D _ladderDown;
@@ -31,8 +35,8 @@ public class LadderDetector : MonoBehaviour
         if (_ladderUp)
         {
             BoxCollider2D ladderBox = (BoxCollider2D)_ladderUp;
-            TopPos = (Vector2)ladderBox.transform.position + ladderBox.offset + Vector2.up * ladderBox.size.y / 2.0f;
-            BottomPos = (Vector2)ladderBox.transform.position + ladderBox.offset + Vector2.down * ladderBox.size.y / 2.0f;
+            UpTopPos = (Vector2)ladderBox.transform.position + ladderBox.offset + Vector2.up * ladderBox.size.y / 2.0f;
+            UpBottomPos = (Vector2)ladderBox.transform.position + ladderBox.offset + Vector2.down * ladderBox.size.y / 2.0f;
             CanGoUp = true;
         }
         else
@@ -44,8 +48,8 @@ public class LadderDetector : MonoBehaviour
         if (_ladderDown)
         {
             BoxCollider2D ladderBox = (BoxCollider2D)_ladderDown;
-            TopPos = (Vector2)ladderBox.transform.position + ladderBox.offset + Vector2.up * ladderBox.size.y / 2.0f;
-            BottomPos = (Vector2)ladderBox.transform.position + ladderBox.offset + Vector2.down * ladderBox.size.y / 2.0f;
+            DownTopPos = (Vector2)ladderBox.transform.position + ladderBox.offset + Vector2.up * ladderBox.size.y / 2.0f;
+            DownBottomPos = (Vector2)ladderBox.transform.position + ladderBox.offset + Vector2.down * ladderBox.size.y / 2.0f;
             CanGoDown = true;
         }
         else

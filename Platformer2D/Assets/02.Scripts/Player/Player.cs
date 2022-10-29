@@ -1,9 +1,11 @@
-using System;
+using System.Collections;
+using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class Enemy : MonoBehaviour
+public class Player : MonoBehaviour
 {
+    public bool Invinciable;
     private int _hp;
     public int Hp
     {
@@ -22,13 +24,14 @@ public class Enemy : MonoBehaviour
     }
     [SerializeField] private Slider _hpBar;
     [SerializeField] private int _hpMax;
-    [SerializeField] private int _damage = 5;
-    private EnemyController _controller;
     private CapsuleCollider2D _col;
-    [SerializeField] private LayerMask _targetLayer;
-
+    private StateMachine _machine;
+    [SerializeField] private LayerMask _enemyLayer;
     public void Hurt(int damage)
     {
+        if (Invinciable)
+            return;
+
         Hp -= damage;
 
         DamagePopUp.Creat(transform.position + Vector3.up * _col.size.y / 2.0f,
@@ -36,27 +39,15 @@ public class Enemy : MonoBehaviour
                           1 << gameObject.layer);
 
         if (Hp > 0)
-            _controller.ChangeState(EnemyController.States.Hurt);
+            _machine.ChangeState(StateMachine.StateType.Hurt);
         else
-            _controller.ChangeState(EnemyController.States.Die);
+            _machine.ChangeState(StateMachine.StateType.Die);
     }
 
     private void Awake()
     {
         Hp = _hpMax;
-        _controller = GetComponent<EnemyController>();
+        _machine = GetComponent<StateMachine>();
         _col = GetComponent<CapsuleCollider2D>();
-    }
-
-    private void OnTriggerEnter2D(Collider2D collision)
-    {
-        if ((1 << collision.gameObject.layer & _targetLayer) > 0)
-        {
-            if (collision.gameObject.TryGetComponent(out Player player))
-            {
-                player.Hurt(_damage);
-                player.GetComponent<StateMachine>().Knockback(_controller.Direction);
-            }
-        }
     }
 }

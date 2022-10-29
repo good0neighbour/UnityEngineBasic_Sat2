@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class StateLadderUp : StateBase
+public class StateLadderDown: StateBase
 {
     private LadderDetector _ladderDetector;
     private GroundDetector _groundDetector;
@@ -10,7 +10,7 @@ public class StateLadderUp : StateBase
     private CharacterBase _character;
     private float _h => Input.GetAxis("Horizontal");
     private float _v => Input.GetAxisRaw("Vertical");
-    public StateLadderUp(StateMachine.StateType machineType, StateMachine machine)
+    public StateLadderDown(StateMachine.StateType machineType, StateMachine machine)
         : base(machineType, machine)
     {
         _ladderDetector = machine.GetComponent<LadderDetector>();
@@ -19,7 +19,7 @@ public class StateLadderUp : StateBase
         _character = machine.GetComponent<CharacterBase>();
     }
 
-    public override bool IsExcecuteOK => _ladderDetector.CanGoUp &&
+    public override bool IsExcecuteOK => _ladderDetector.CanGoDown &&
                                          (Machine.Current == StateMachine.StateType.Idle ||
                                           Machine.Current == StateMachine.StateType.Move ||
                                           Machine.Current == StateMachine.StateType.Jump ||
@@ -59,7 +59,7 @@ public class StateLadderUp : StateBase
                     AnimationManager.Play("Ladder");
                     Machine.StopMove();
                     _rb.velocity = Vector2.zero;
-                    _rb.position = _ladderDetector.UpBottomStartPos;
+                    _rb.position = _ladderDetector.DownTopStartPos;
                     MoveNext();
                 }
                 break;
@@ -74,20 +74,20 @@ public class StateLadderUp : StateBase
                     _rb.MovePosition(_rb.position + Vector2.up * _v * _character.MoveSpeed * Time.deltaTime);
 
                     // 사다리 위로 떨어지는 조건
-                    if (_rb.position.y > _ladderDetector.UpTopEndPos.y)
+                    if (_rb.position.y > _ladderDetector.DownTopEndPos.y)
                     {
-                        _rb.position = _ladderDetector.UpTopPos;
+                        _rb.position = _ladderDetector.DownTopPos;
                         next = StateMachine.StateType.Idle;
                         MoveNext();
                     }
                     // 사다리 밑으로 떨어지는 조건
-                    else if (_rb.position.y < _ladderDetector.UpBottomEndPos.y)
+                    else if (_rb.position.y < _ladderDetector.DownBottomEndPos.y)
                     {
                         next = StateMachine.StateType.Idle;
                         MoveNext();
                     }
                     // 땅을 밟는 조건
-                    else if (_rb.position.y < _ladderDetector.UpBottomStartPos.y &&
+                    else if (_rb.position.y < _ladderDetector.DownBottomStartPos.y &&
                         _groundDetector.IsDetected)
                     {
                         next = StateMachine.StateType.Idle;
