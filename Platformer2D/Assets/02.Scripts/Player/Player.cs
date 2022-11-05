@@ -5,6 +5,7 @@ using UnityEngine.UI;
 
 public class Player : MonoBehaviour
 {
+    public static Player Instance;
     public bool Invinciable;
     private int _hp;
     public int Hp
@@ -46,6 +47,12 @@ public class Player : MonoBehaviour
 
     private void Awake()
     {
+        if (Instance == null)
+        {
+            Instance = this;
+            DontDestroyOnLoad(gameObject);
+        }
+
         Hp = _hpMax;
         _machine = GetComponent<StateMachine>();
         _col = GetComponent<CapsuleCollider2D>();
