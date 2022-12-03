@@ -74,6 +74,33 @@ public class ObjectPool : MonoBehaviour
         return go;
     }
 
+    public GameObject Spawn(string name, Vector3 spawnPos, Quaternion quaternion)
+    {
+        if (_spawnQueueDictionary.ContainsKey(name) == false)
+            return null;
+
+        if (_spawnQueueDictionary[name].Count <= 0)
+        {
+            ObjectPoolElement element = _elements.Find(e => e.Name == name);
+            for (int i = 0; i < Math.Ceiling(Math.Log10(element.Num)); i++)
+            {
+                InstantiateElement(element);
+            }
+        }
+
+        GameObject go = _spawnQueueDictionary[name].Dequeue();
+        go.transform.SetParent(null);
+        go.transform.localPosition = spawnPos;
+        go.transform.localRotation = quaternion;
+        go.SetActive(true);
+        return go;
+    }
+
+    public void Return(GameObject go, float delay)
+    {
+        StartCoroutine(E_Return(go, delay));
+    }
+
     /// <summary>
     /// 빌려간 것 반납할 때 호출하는 함수
     /// </summary>
@@ -118,8 +145,15 @@ public class ObjectPool : MonoBehaviour
         }
         go.transform.SetAsLastSibling();
     }
+
+    private IEnumerator E_Return(GameObject go, float delay)
+    {
+        yield return new WaitForSeconds(delay);
+        Return(go);
+    }
 }
 
+[Serializable]
 public struct ObjectPoolElement
 {
     public string Name;

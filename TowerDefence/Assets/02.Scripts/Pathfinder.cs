@@ -63,6 +63,8 @@ public class Pathfinder : MonoBehaviour
 
     private static List<Transform> _path;
     private static List<Transform> _path_DFS;
+    private static List<Transform> _path_BFS;
+    private static List<List<Transform>> _pathList_BFS;
 
     public static void SetUpMap()
     {
@@ -96,8 +98,14 @@ public class Pathfinder : MonoBehaviour
                 }
                 break;
             case Options.BFS:
-                found = false;
-                break;
+                {
+                    found = BFS(start: TransformToCoord(start),
+                            end: TransformToCoord(end));
+
+                    if (found)
+                        optimizedPath = _path_BFS;
+                    break;
+                }
             case Options.DFS:
                 {
                     found = DFS(start: TransformToCoord(start),
@@ -203,10 +211,8 @@ public class Pathfinder : MonoBehaviour
                 continue;
 
             // 도착 여부
-            if (next.Y == end.Y &&
-                next.X == end.X)
+            if (next == end)
             {
-                Debug.Log($"=============== end {end.X}, {end.Y} ===============");
                 return true;
             }
             else
@@ -223,10 +229,82 @@ public class Pathfinder : MonoBehaviour
         return isFound;
     }
 
+    private static bool BFS(Coord start, Coord end)
+    {
+        _pathList_BFS = new List<List<Transform>>();
+
+        bool isFinished = false;
+        List<KeyValuePair<Coord, Coord>> parents = new List<KeyValuePair<Coord, Coord>>(); //탐색한 자식노드 - 부모노드 쌍
+        Queue<Coord> queue = new Queue<Coord>(); // 탐색을 할 대상 노드 큐
+        queue.Enqueue(start);
+        _visited[start.X, start.Y] = true;
+
+        // 탐색하려는 노드가 존재하는 동안 반복
+        while (queue.Count > 0)
+        {
+            Coord parent = queue.Dequeue();
+
+            for (int i = 0; i < _direction.GetLength(1); i++)
+            {
+                Coord next = new Coord(parent.Y + _direction[0, i], parent.X + _direction[1, i]);
+
+                // 탐색 위치가 맵을 벗어나는지
+                if (next.Y < 0 || next.Y >= _map.GetLength(0) ||
+                    next.X < 0 || next.X >= _map.GetLength(1))
+                    continue;
+
+                //탐색 위치가 길이 아닐 경우
+                if (_map[next.Y, next.X].Type != NodeTypes.Path)
+                    continue;
+
+                // 방문 여부
+                if (_visited[next.Y, next.X])
+                    continue;
+
+                // 방문
+                parents.Add(new KeyValuePair<Coord, Coord>(parent, next));
+                _visited[next.Y, next.X] = true;
+
+                // 도착 여부
+                if (next == end)
+                {
+                    isFinished = true;
+                    _pathList_BFS.Add(CalcPath(parents));
+                }
+                else
+                {
+                    queue.Enqueue(next);
+                }
+            }
+        }
+
+        _path_BFS = _pathList_BFS.OrderBy(path => path.Count).First(); // list들 중에서 가장 요소 갯수가 적은 list를 반환
+        return isFinished;
+    }
+
+    private static List<Transform> CalcPath(List<KeyValuePair<Coord, Coord>> parents)
+    {
+        List<Transform> path = new List<Transform>();
+        Coord coord = parents.Last().Value; // 제일 마지막 자식 노드
+        path.Add(GetTransform(coord));
+
+        int index = parents.Count - 1; // 제일 마지막 인덱스
+        while (index > 0 &&
+               parents[index].Key != parents.First().Key)
+        {
+            path.Add(GetTransform(parents[index].Key)); // 부모 노드 추가
+            index = parents.FindLastIndex(pair => pair.Value == parents[index].Key); //현재 부모노드를 자식노드로 가지는 조부모노드의 인덱스 찾기
+        }
+        path.Add(GetTransform(parents.First().Key)); // 제일 처음 노드 추가
+        path.Reverse(); // 경로가 반대로 저장했으니 뒤집어줌
+
+        return path;
+    }
+
     private static Coord TransformToCoord(Transform target)
     {
-        return new Coord((int)((target.position.z - _leftBottom.position.z) / _nodeTerm),
-                         (int)((target.position.x - _leftBottom.position.x) / _nodeTerm));
+        return new Coord(Mathf.RoundToInt((target.position.z - _leftBottom.position.z) / _nodeTerm),
+                         Mathf.RoundToInt((target.position.x - _leftBottom.position.x) / _nodeTerm));
     }
 
     private static Transform GetTransform(Coord coord)
