@@ -10,13 +10,13 @@ GameObject:
   m_Component:
   - component: {fileID: 2177626449777677289}
   - component: {fileID: 6144067847631401417}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Point Light
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &2177626449777677289
 Transform:
   m_ObjectHideFlags: 0
@@ -44,7 +44,7 @@ Light:
   m_Type: 2
   m_Shape: 0
   m_Color: {r: 1, g: 0.5882353, b: 0, a: 1}
-  m_Intensity: 50
+  m_Intensity: 20
   m_Range: 0.7
   m_SpotAngle: 30
   m_InnerSpotAngle: 21.80208
@@ -104,7 +104,8 @@ GameObject:
   m_Component:
   - component: {fileID: 1869204717897571237}
   - component: {fileID: 1023274440}
-  m_Layer: 0
+  - component: {fileID: 6201913348439738548}
+  m_Layer: 10
   m_Name: MachineGun3
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -141,17 +142,31 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Info: {fileID: 11400000, guid: 6130fd0bab66c2447aa12d57f56f8580, type: 2}
+  Node: {fileID: 0}
   _rotationPoint: {fileID: 5211681207702138834}
   _detectRange: 3
   TargetLayer:
     serializedVersion: 2
     m_Bits: 16384
   _firePoints:
-  - {fileID: 62747064184116447}
-  - {fileID: 2177626449777677289}
+  - {fileID: 8143496028491236993}
+  - {fileID: 3767554681189978906}
   _firePointsBlinkTime: 0.07
-  _damage: 10
-  _reloadTime: 0.05
+  _damage: 1
+  _reloadTime: 0.1
+--- !u!135 &6201913348439738548
+SphereCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1869204717897571242}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Radius: 1
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &3497656589082743626
 GameObject:
   m_ObjectHideFlags: 0
@@ -161,13 +176,13 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 8143496028491236993}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: FirePoint
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &8143496028491236993
 Transform:
   m_ObjectHideFlags: 0
@@ -194,13 +209,13 @@ GameObject:
   m_Component:
   - component: {fileID: 62747064184116447}
   - component: {fileID: 5018378284807270212}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Point Light
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &62747064184116447
 Transform:
   m_ObjectHideFlags: 0
@@ -228,7 +243,7 @@ Light:
   m_Type: 2
   m_Shape: 0
   m_Color: {r: 1, g: 0.5882353, b: 0, a: 1}
-  m_Intensity: 50
+  m_Intensity: 20
   m_Range: 0.7
   m_SpotAngle: 30
   m_InnerSpotAngle: 21.80208
@@ -287,13 +302,13 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 3767554681189978906}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: FirePoint (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &3767554681189978906
 Transform:
   m_ObjectHideFlags: 0
@@ -320,6 +335,10 @@ PrefabInstance:
     - target: {fileID: 100018, guid: 7b4f0cb8fc3314059b88194196134996, type: 3}
       propertyPath: m_Name
       value: Turret_MachineGun_L03
+      objectReference: {fileID: 0}
+    - target: {fileID: 100018, guid: 7b4f0cb8fc3314059b88194196134996, type: 3}
+      propertyPath: m_Layer
+      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 400018, guid: 7b4f0cb8fc3314059b88194196134996, type: 3}
       propertyPath: m_RootOrder
@@ -386,6 +405,10 @@ PrefabInstance:
     - target: {fileID: 100000, guid: dca1d127a63854ace99cfd10bf9916cd, type: 3}
       propertyPath: m_Name
       value: Base_MachineGun_L03
+      objectReference: {fileID: 0}
+    - target: {fileID: 100000, guid: dca1d127a63854ace99cfd10bf9916cd, type: 3}
+      propertyPath: m_Layer
+      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: dca1d127a63854ace99cfd10bf9916cd, type: 3}
       propertyPath: m_RootOrder

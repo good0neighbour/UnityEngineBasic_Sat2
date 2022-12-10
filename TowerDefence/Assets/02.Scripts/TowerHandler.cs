@@ -6,6 +6,7 @@ public class TowerHandler : MonoBehaviour
 {
     public static TowerHandler Instance;
     private GameObject _previewTower;
+    private TowerInfo _info;
     private Ray _ray;
     private RaycastHit _hit;
     [SerializeField] private LayerMask _nodeLayer;
@@ -17,6 +18,7 @@ public class TowerHandler : MonoBehaviour
 
         if (TowerAssets.Instance.TryGetPreviewTower(info, out GameObject prefab))
         {
+            _info = info;
             _previewTower = Instantiate(prefab);
             gameObject.SetActive(true);
         }
@@ -44,6 +46,9 @@ public class TowerHandler : MonoBehaviour
     {
         if (Input.GetKeyDown(KeyCode.Escape))
             Cancel();
+
+        if (Input.GetMouseButtonUp(0))
+            OnClick();
     }
 
     private void FixedUpdate()
@@ -60,6 +65,27 @@ public class TowerHandler : MonoBehaviour
         else
         {
             _previewTower.SetActive(false);
+        }
+    }
+
+    private void OnClick()
+    {
+        if (_info.BuildPrice >= Player.Instance.Money)
+        {
+            Debug.Log("잔액이 부족합니다.");
+            return;
+        }
+
+        if (_hit.collider == null)
+        {
+            Debug.Log("건설할 위치가 올바르지 않습니다");
+            return;
+        }
+
+        if (_hit.collider.GetComponent<Node>().TryBuildTowerHere(_info, out Tower towerBuilt))
+        {
+            Debug.Log($"{_info.name}타워 건설 완료");
+            Player.Instance.Money -= _info.BuildPrice;
         }
     }
 }

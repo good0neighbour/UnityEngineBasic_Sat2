@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: MachineGun2
   m_EditorClassIdentifier: 
   Type: 0
-  UpgradeLevel: 1
+  UpgradeLevel: 2
   BuildPrice: 150
   SellPrice: 180
   Icon: {fileID: 0}

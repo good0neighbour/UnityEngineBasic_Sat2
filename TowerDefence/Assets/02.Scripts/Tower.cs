@@ -5,12 +5,13 @@ using UnityEngine;
 public abstract class Tower : MonoBehaviour
 {
     public TowerInfo Info;
+    public Node Node;
     [SerializeField] private Transform _rotationPoint;
     [SerializeField] private float _detectRange;
     [SerializeField] protected LayerMask TargetLayer;
     protected Transform Target;
 
-    private void FixedUpdate()
+    protected virtual void FixedUpdate()
     {
         Collider[] cols = Physics.OverlapSphere(transform.position, _detectRange, TargetLayer);
 
@@ -23,6 +24,12 @@ public abstract class Tower : MonoBehaviour
         {
             Target = null;
         }
+    }
+
+    private void OnMouseDown()
+    {
+        if (TowerHandler.Instance.gameObject.activeSelf == false)
+            TowerUI.Instance.SetUp(this);
     }
 
     private void OnDrawGizmos()

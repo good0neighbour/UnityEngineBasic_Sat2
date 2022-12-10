@@ -8,7 +8,7 @@ public class Projectile : MonoBehaviour
     protected float Speed;
     protected int Damage;
     protected LayerMask TargetLayer;
-    protected LayerMask TouchLayer;
+    [SerializeField] protected LayerMask TouchLayer;
     protected Transform Target;
 
     public void SetUp(bool isGuided, float speed, int damage, LayerMask targetLayer, Transform target)
@@ -41,7 +41,7 @@ public class Projectile : MonoBehaviour
         {
             // todo -> damage to target
         }
-        else if (1 << other.gameObject.layer == TouchLayer)
+        else if ((1 << other.gameObject.layer & TouchLayer) > 0)
         {
             // todo -> destroy self
         }

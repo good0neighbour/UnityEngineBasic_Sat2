@@ -14,7 +14,7 @@ public class ProjectileMachineGunBullet : Projectile
             ExplosionEffect();
             ObjectPool.Instance.Return(gameObject);
         }
-        else if (1 << other.gameObject.layer == TouchLayer)
+        else if ((1 << other.gameObject.layer & TouchLayer) > 0)
         {
             ExplosionEffect();
             ObjectPool.Instance.Return(gameObject);

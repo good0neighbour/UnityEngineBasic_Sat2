@@ -5,6 +5,8 @@ using UnityEngine.SceneManagement;
 public class GameManager : MonoBehaviour
 {
     public static GameManager Instance;
+
+    public bool IsGameStarted => Current > GameStates.StartGame;
     public enum GameStates
     {
         Idle,
@@ -20,6 +22,7 @@ public class GameManager : MonoBehaviour
     }
     public GameStates Current;
     public int Level;
+    public LevelData Data;
 
     public void SelectLevel(int level)
     {
@@ -62,7 +65,7 @@ public class GameManager : MonoBehaviour
                 break;
             case GameStates.WaitUntilLevelDataLoaded:
                 {
-                    if (LevelDataAssets.Instance.TryGetLevelData(Level, out LevelData data))
+                    if (LevelDataAssets.Instance.TryGetLevelData(Level, out Data))
                         MoveNext();
                     else
                         throw new System.Exception("Failed to load level data");
@@ -76,8 +79,11 @@ public class GameManager : MonoBehaviour
                 break;
             case GameStates.LoadLevel:
                 {
-                    Pathfinder.SetUpMap();
-                    MoveNext();
+                    if (SceneManager.GetActiveScene().name == $"Level{Level}")
+                    {
+                        Pathfinder.SetUpMap();
+                        MoveNext();
+                    }
                 }
                 break;
             case GameStates.WaitUntilLevelLoaded:
