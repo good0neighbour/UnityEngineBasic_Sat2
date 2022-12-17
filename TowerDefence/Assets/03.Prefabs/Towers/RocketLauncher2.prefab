@@ -104,7 +104,7 @@ MonoBehaviour:
   - {fileID: 3370670022813501650}
   - {fileID: 4948772429008003879}
   _firePointsBlinkTime: 0.1
-  _damage: 10
+  _damage: 20
   _reloadTime: 2
 --- !u!1 &3497656589082743626
 GameObject:

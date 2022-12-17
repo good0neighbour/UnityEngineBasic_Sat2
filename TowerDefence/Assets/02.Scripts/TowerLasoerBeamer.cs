@@ -28,6 +28,7 @@ public class TowerLasoerBeamer : Tower
     [SerializeField] private float _damagePeriod = 0.2f;
     private float _damageTimer;
     private float _chargeTimer;
+    private Transform _targetMem;
 
     protected override void FixedUpdate()
     {
@@ -50,9 +51,19 @@ public class TowerLasoerBeamer : Tower
 
             if (_damageTimer > 0)
                 _damageTimer = 0;
+
+            if (_targetMem != null)
+                _targetMem = null;
         }
         else
         {
+            if (Target != _targetMem)
+            {
+                _targetMem = Target;
+                Transform target = Target;
+                Target.GetComponent<Enemy>().BuffManager.ActiveBuff(new BuffSlowingDown<Enemy>(1.5f), () => target == _targetMem);
+            }
+
             _beam.SetPosition(0, _firePoint.position);
             _beam.SetPosition(1, Target.position);
 

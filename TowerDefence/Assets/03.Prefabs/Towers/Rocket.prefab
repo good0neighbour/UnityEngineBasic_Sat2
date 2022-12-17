@@ -62,8 +62,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   TouchLayer:
     serializedVersion: 2
-    m_Bits: 256
-  _explosionEffect: {fileID: 0}
+    m_Bits: 257
   _explosionRange: 2
 --- !u!54 &5776708399484875372
 Rigidbody:

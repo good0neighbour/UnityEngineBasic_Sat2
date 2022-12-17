@@ -19,13 +19,13 @@ MonoBehaviour:
   - Stage: 1
     SpawnDataList:
     - Prefab: {fileID: 3636968802726441855, guid: 5e197b8a508ac924fbad2092cb5c2a2f, type: 3}
-      Num: 5
+      Num: 10
       GoalPointIndex: 0
       SpawnPointIndex: 0
       Delay: 1
       Term: 1
     - Prefab: {fileID: 6219941872059707981, guid: 50d3fed88f6353b45a44564f20b7e110, type: 3}
-      Num: 3
+      Num: 5
       GoalPointIndex: 0
       SpawnPointIndex: 0
       Delay: 1
@@ -33,7 +33,21 @@ MonoBehaviour:
   - Stage: 2
     SpawnDataList:
     - Prefab: {fileID: 3636968802726441855, guid: 5e197b8a508ac924fbad2092cb5c2a2f, type: 3}
-      Num: 8
+      Num: 20
+      GoalPointIndex: 0
+      SpawnPointIndex: 0
+      Delay: 1
+      Term: 0.5
+  - Stage: 3
+    SpawnDataList:
+    - Prefab: {fileID: 3636968802726441855, guid: 5e197b8a508ac924fbad2092cb5c2a2f, type: 3}
+      Num: 20
+      GoalPointIndex: 0
+      SpawnPointIndex: 0
+      Delay: 1
+      Term: 0.8
+    - Prefab: {fileID: 6219941872059707981, guid: 50d3fed88f6353b45a44564f20b7e110, type: 3}
+      Num: 15
       GoalPointIndex: 0
       SpawnPointIndex: 0
       Delay: 1
@@ -41,14 +55,36 @@ MonoBehaviour:
   - Stage: 3
     SpawnDataList:
     - Prefab: {fileID: 3636968802726441855, guid: 5e197b8a508ac924fbad2092cb5c2a2f, type: 3}
-      Num: 8
+      Num: 30
       GoalPointIndex: 0
       SpawnPointIndex: 0
       Delay: 1
-      Term: 0.8
+      Term: 0.5
     - Prefab: {fileID: 6219941872059707981, guid: 50d3fed88f6353b45a44564f20b7e110, type: 3}
-      Num: 8
+      Num: 25
       GoalPointIndex: 0
       SpawnPointIndex: 0
       Delay: 1
-      Term: 1.2
+      Term: 0.5
+  - Stage: 3
+    SpawnDataList:
+    - Prefab: {fileID: 6219941872059707981, guid: 50d3fed88f6353b45a44564f20b7e110, type: 3}
+      Num: 30
+      GoalPointIndex: 0
+      SpawnPointIndex: 0
+      Delay: 1
+      Term: 0.5
+  - Stage: 3
+    SpawnDataList:
+    - Prefab: {fileID: 3636968802726441855, guid: 5e197b8a508ac924fbad2092cb5c2a2f, type: 3}
+      Num: 50
+      GoalPointIndex: 0
+      SpawnPointIndex: 0
+      Delay: 1
+      Term: 0.5
+    - Prefab: {fileID: 6219941872059707981, guid: 50d3fed88f6353b45a44564f20b7e110, type: 3}
+      Num: 50
+      GoalPointIndex: 0
+      SpawnPointIndex: 0
+      Delay: 1
+      Term: 0.5

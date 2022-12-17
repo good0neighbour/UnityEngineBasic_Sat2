@@ -1,13 +1,12 @@
 using System;
-using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class Enemy : MonoBehaviour
+public class Enemy : MonoBehaviour, IHp, ISpeed
 {
-    private float _hp;
-    public float Hp
+    private int _hp;
+    public int Hp
     {
         get
         {
@@ -19,13 +18,13 @@ public class Enemy : MonoBehaviour
                 value = 0;
 
             _hp = value;
-            _hpSlider.value = value / _hpMax;
+            _hpSlider.value = (float)value / _hpMax;
 
             if (_hp <= 0)
                 Die();
         }
     }
-    [SerializeField] private float _hpMax;
+    [SerializeField] private int _hpMax;
     [SerializeField] private Slider _hpSlider;
     public event Action OnDie;
 
@@ -43,6 +42,8 @@ public class Enemy : MonoBehaviour
     }
     [SerializeField] private float _speedOrigin = 2.0f;
 
+    public BuffManager<Enemy> BuffManager { get; private set; }
+
     public void Hurt(int damage)
     {
         Hp -= damage;
@@ -57,5 +58,7 @@ public class Enemy : MonoBehaviour
     {
         Hp = _hpMax;
         Speed = _speedOrigin;
+
+        BuffManager = new BuffManager<Enemy>(this);
     }
 }

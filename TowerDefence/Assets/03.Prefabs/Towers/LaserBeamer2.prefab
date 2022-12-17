@@ -4824,7 +4824,7 @@ GameObject:
   - component: {fileID: 5577074181900699911}
   - component: {fileID: 6465792607855761312}
   m_Layer: 10
-  m_Name: LasorBeamer2
+  m_Name: LaserBeamer2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -4884,9 +4884,9 @@ MonoBehaviour:
   _beam: {fileID: 5677066249885646504}
   _beamHitEffect: {fileID: 1742878108370231362}
   _firePoint: {fileID: 8143496028491236993}
-  _damage: 10
+  _damage: 2
   _damageChargeTime: 1
-  _damageGain: 5
+  _damageGain: 2
   _damagePeriod: 0.2
 --- !u!1 &3497656589082743626
 GameObject:

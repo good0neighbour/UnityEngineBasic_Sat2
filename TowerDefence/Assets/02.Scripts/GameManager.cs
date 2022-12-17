@@ -24,6 +24,12 @@ public class GameManager : MonoBehaviour
     public int Level;
     public LevelData Data;
 
+    public void GoToLobby()
+    {
+        SceneManager.LoadScene("Loby");
+        Current = GameStates.Idle;
+    }
+
     public void SelectLevel(int level)
     {
         Level = level;
@@ -33,6 +39,29 @@ public class GameManager : MonoBehaviour
     {
         if (Current == GameStates.Idle)
             MoveNext();
+    }
+
+    public void RestartLevel()
+    {
+        Current = GameStates.LoadLevelData;
+    }
+
+    public void StartNextLevel()
+    {
+        Level++;
+        Current = GameStates.LoadLevelData;
+    }
+
+    public void ClearLevel()
+    {
+        if (Current == GameStates.WaitUntilLevelFinished)
+            Current = GameStates.LevelCleared;
+    }
+
+    public void FailLevel()
+    {
+        if (Current == GameStates.WaitUntilLevelFinished)
+            Current = GameStates.LevelFailed;
     }
 
     private void Awake()
@@ -94,8 +123,16 @@ public class GameManager : MonoBehaviour
             case GameStates.WaitUntilLevelFinished:
                 break;
             case GameStates.LevelCleared:
+                {
+                    Instantiate(Resources.Load("Canvas - LevelSuccess"));
+                    Current = GameStates.WaitForUser;
+                }
                 break;
             case GameStates.LevelFailed:
+                {
+                    Instantiate(Resources.Load("Canvas - LevelFailure"));
+                    Current = GameStates.WaitForUser;
+                }
                 break;
             case GameStates.WaitForUser:
                 break;
