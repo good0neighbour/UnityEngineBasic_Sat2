@@ -5,7 +5,7 @@ using UnityEngine;
 public class AnimatorWrapper : MonoBehaviour
 {
     public bool isPreviousStateFinished => _monitorOnStateHashMem == _monitorOffStateHash;
-    public bool isPreviousMachineFinished => _monitorOnStateHashMem == _monitorOffMachineHash;
+    public bool isPreviousMachineFinished => _monitorOnMachineHashMem == _monitorOffMachineHash;
 
     private int _monitorOnStateHash; // 감시자 켜진 애니메이터 상태의 해쉬코드
     private int _monitorOnStateHashMem; // 감시자 켜졌던 애니메이터 상태의 해쉬코드
