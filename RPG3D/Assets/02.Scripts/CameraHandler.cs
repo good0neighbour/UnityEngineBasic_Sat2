@@ -19,6 +19,10 @@ public class CameraHandler : MonoBehaviour
         _distance = Vector3.Distance(transform.position, _target.position);
         _y = transform.eulerAngles.x;
         _x = transform.eulerAngles.y;
+    }
+
+    private void Start()
+    {
         CursorManager.instance.DeactiveCursor();
     }
 

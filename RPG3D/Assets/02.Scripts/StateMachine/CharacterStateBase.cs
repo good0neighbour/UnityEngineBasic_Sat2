@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class CharacterStateBase : IState
+public abstract class CharacterStateBase : IState
 {
     protected GameObject owner;
     protected Func<bool> condition;

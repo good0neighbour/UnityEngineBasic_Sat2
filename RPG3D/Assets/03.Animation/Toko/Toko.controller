@@ -850,7 +850,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 098c3e8123396db449635fd183adae04, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  boolParameterNameToToggle: finishcombo
+  boolParameterNameToToggle: finishCombo
 --- !u!114 &-991560176603076752
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1562,7 +1562,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 098c3e8123396db449635fd183adae04, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  boolParameterNameToToggle: finishcombo
+  boolParameterNameToToggle: finishCombo
 --- !u!1102 &3230282644685970793
 AnimatorState:
   serializedVersion: 6

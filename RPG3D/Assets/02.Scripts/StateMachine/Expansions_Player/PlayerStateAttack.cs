@@ -55,7 +55,7 @@ public class PlayerStateAttack : CharacterStateBase
             //--------------------------------
             case 2:
                 {
-                    if (animator.isPreviousMachineFinished)
+                    if (animator.isPreviousStateFinished)
                     {
                         animator.SetBool("doCombo", false);
                         current = 0;

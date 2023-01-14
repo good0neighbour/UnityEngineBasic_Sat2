@@ -1,6 +1,10 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using static BT.Parallel;
+using UnityEngine;
+using Random = UnityEngine.Random;
+using UnityEngine.EventSystems;
 
 namespace BT
 {
@@ -14,7 +18,7 @@ namespace BT
     public class BTTester
     {
         BehaviourTree bt;
-        void Test()
+        void TestBuild()
         {
             bt = new BehaviourTree();
 
@@ -34,6 +38,15 @@ namespace BT
             condition1.child = execution2;
             selector1.AddChild(execution3);
             selector1.AddChild(execution4);
+
+            bt.StartBuild()
+                .Sequence()
+                    .Sequence()
+                        .Execution(() => Status.Success)
+                        .Execution(() => Status.Success)
+                    .ExitCurrentComposite()
+                    .Sequence()
+                        .Execution(() => Status.Success);
         }
 
         void TestTick()
@@ -62,12 +75,94 @@ namespace BT
             return this;
         }
 
+        public BehaviourTree Condition(Func<bool> condition)
+        {
+            Condition con = new Condition(condition);
+            AttachAsChild(_current, con);
+            _current = con;
+            return this;
+        }
+
+        public BehaviourTree Execution(Func<Status> execute)
+        {
+            Execution execution = new Execution(execute);
+            AttachAsChild(_current, execution);
+
+            if (_compositeStack.Count > 0)
+                _current = _compositeStack.Peek();
+            else
+                _current = null;
+            return this;
+        }
+
+        public BehaviourTree RandomSleep(float minTime, float maxTime)
+        {
+            RandomSleep randomSleep = new RandomSleep(minTime, maxTime);
+            AttachAsChild(_current, randomSleep);
+            _current = randomSleep;
+            return this;
+        }
+
         public BehaviourTree Sequence()
         {
-            Sequence sequence = new Sequence();
-            AttachAsChild(_current, sequence);
-            _compositeStack.Push(sequence);
-            _current = sequence;
+            CompositeStackPush(new Sequence());
+            return this;
+        }
+
+        public BehaviourTree RandomSequence()
+        {
+            CompositeStackPush(new RandomSequence());
+            return this;
+        }
+
+        public BehaviourTree Filter()
+        {
+            CompositeStackPush(new Filter());
+            return this;
+        }
+
+        public BehaviourTree Selector()
+        {
+            CompositeStackPush(new Selector());
+            return this;
+        }
+
+        public BehaviourTree RandomSelector()
+        {
+            CompositeStackPush(new RandomSelector());
+            return this;
+        }
+
+        public BehaviourTree Parallel(Policy successPolicy, Policy failurePolicy)
+        {
+            CompositeStackPush(new Parallel(successPolicy, failurePolicy));
+            return this;
+        }
+
+        private void CompositeStackPush(Composite composite)
+        {
+            AttachAsChild(_current, composite);
+            _compositeStack.Push(composite);
+            _current = composite;
+        }
+
+        public BehaviourTree ExitCurrentComposite()
+        {
+            if (_compositeStack.Count > 1)
+            {
+                _compositeStack.Pop();
+                _current = _compositeStack.Peek();
+            }
+            else if (_compositeStack.Count == 1)
+            {
+                _compositeStack.Pop();
+                _current = null;
+            }
+            else
+            {
+                throw new Exception("[BehaviourTree] : Composite stack does not exist");
+            }
+
             return this;
         }
 
@@ -186,6 +281,7 @@ namespace BT
     public abstract class Composite : Behaviour
     {
         public List<Behaviour> children { get; set; }
+
         public Composite()
         {
             children = new List<Behaviour>();
@@ -306,7 +402,7 @@ namespace BT
     /// 자식행동 결과 상관없이 모든 자식 행동 수행함.
     /// 반환값은 반환 정책에 따라서 결정됨.
     /// </summary>
-    public class Pararell : Composite
+    public class Parallel : Composite
     {
         public enum Policy
         {
@@ -317,7 +413,7 @@ namespace BT
         private Policy _successPolicy;
         private Policy _failurePolicy;
 
-        public Pararell(Policy successPolicy, Policy failurePolicy)
+        public Parallel(Policy successPolicy, Policy failurePolicy)
         {
             _successPolicy = successPolicy;
             _failurePolicy = failurePolicy;
@@ -347,7 +443,7 @@ namespace BT
                         runningLeaf = leaf;
                         break;
                     default:
-                        throw new Exception("[Pararell Behaviour] : 행동 반환값 오류");
+                        throw new Exception("[Parallel Behaviour] : 행동 반환값 오류");
                 }
             }
 
@@ -368,8 +464,71 @@ namespace BT
             }
             else
             {
-                throw new Exception("[Pararell Behaviour] : 반환 정책 오류");
+                throw new Exception("[Parallel Behaviour] : 반환 정책 오류");
             }
+        }
+    }
+
+    public class RandomSleep : Decorator
+    {
+        private enum Step
+        {
+            BeginSleep,
+            Sleeping,
+            EndSleep
+        }
+        private Step _step;
+        private float _timeMin, _timeMax, _timeMark, _duration;
+
+        public RandomSleep(float timeMin, float timeMax) : base()
+        {
+            _timeMin = timeMin;
+            _timeMax = timeMax;
+        }
+
+        public override Status Invoke(out Behaviour leaf)
+        {
+            if (_step == Step.BeginSleep)
+                return base.Invoke(out leaf);
+            else
+                return Decorate(Status.Success, out leaf);
+        }
+
+        public override Status Decorate(Status status, out Behaviour leaf)
+        {
+            leaf = this;
+
+            if (status == Status.Failure)
+                return Status.Failure;
+
+            Status result = Status.Running;
+
+            switch (_step)
+            {
+                case Step.BeginSleep:
+                    {
+                        _timeMark = Time.time;
+                        _duration = Random.Range(_timeMin, _timeMax);
+                        _step++;
+                    }
+                    break;
+                case Step.Sleeping:
+                    {
+                        if (Time.time - _timeMark > _duration)
+                            _step++;
+                    }
+                    break;
+                case Step.EndSleep:
+                    {
+                        result = Status.Success;
+                        _step = Step.BeginSleep;
+                    }
+                    break;
+                default:
+                    break;
+            }
+
+            return result;
         }
     }
 }

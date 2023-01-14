@@ -28,7 +28,7 @@ public abstract class CharacterStateMachine
 
         currentType = default(StateType);
         current = states[currentType];
-        current.Execute();
+        current.Execute();        
     }
 
     public abstract void InitStates();

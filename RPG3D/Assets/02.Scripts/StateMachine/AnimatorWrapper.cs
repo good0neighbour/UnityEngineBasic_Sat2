@@ -25,7 +25,7 @@ public class AnimatorWrapper : MonoBehaviour
         {
             monitor.OnEnter += (hash) =>
             {
-                _monitorOnStateHashMem = _monitorOffStateHash;
+                _monitorOnStateHashMem = _monitorOnStateHash;
                 _monitorOnStateHash = hash;
             };
 
@@ -39,7 +39,7 @@ public class AnimatorWrapper : MonoBehaviour
         {
             monitor.OnEnter += (hash) =>
             {
-                _monitorOnMachineHashMem = _monitorOffMachineHash;
+                _monitorOnMachineHashMem = _monitorOnMachineHash;
                 _monitorOnMachineHash = hash;
             };
 
