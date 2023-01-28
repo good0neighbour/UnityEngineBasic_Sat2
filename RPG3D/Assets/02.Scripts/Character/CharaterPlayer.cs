@@ -58,4 +58,12 @@ public class CharaterPlayer : CharacterBase
             target.Damage(STR);
         }
     }
+
+    private void OnTriggerStay(Collider other)
+    {
+        if (other.gameObject.layer == LayerMask.NameToLayer("Item"))
+        {
+            other.GetComponent<ItemController>().PickUp();
+        }
+    }
 }
