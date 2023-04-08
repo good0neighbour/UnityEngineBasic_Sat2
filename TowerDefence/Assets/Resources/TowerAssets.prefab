@@ -1,0 +1,60 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1 &2594391498527024975
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 6839145540274510637}
+  - component: {fileID: 208542334737280618}
+  m_Layer: 0
+  m_Name: TowerAssets
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &6839145540274510637
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2594391498527024975}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 1.45042, y: -15.332235, z: 12.019042}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &208542334737280618
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2594391498527024975}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 79970d2b179e56f4e98d2928827ff060, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _towers:
+  - {fileID: 1023274440, guid: d9539bbe84055b549be7d62df494d965, type: 3}
+  - {fileID: 1023274440, guid: 0cc809478aa52cf4298356fc47526413, type: 3}
+  - {fileID: 1023274440, guid: b738fae7c0f8bd745aaa027fa8727dd5, type: 3}
+  - {fileID: 6271931574122208723, guid: a1470efda66ae1940870fde4c5552c74, type: 3}
+  - {fileID: 6271931574122208723, guid: adef71129c800474995b752878645128, type: 3}
+  - {fileID: 6271931574122208723, guid: 154801247efc4934596d0d3d4e4838d5, type: 3}
+  - {fileID: 6465792607855761312, guid: e6e7e5ba5eb617d4691bf34282c67b84, type: 3}
+  - {fileID: 6465792607855761312, guid: 90d9a113e642f844db1beb85ccf507a3, type: 3}
+  - {fileID: 6465792607855761312, guid: ce212ac89cd7739418dfa15a7bb0e8b1, type: 3}
+  _previewTowers:
+  - {fileID: 1869204717897571242, guid: 7bb4cf88b630ef84ea4dfd99f0606657, type: 3}
+  - {fileID: 1869204717897571242, guid: 954ba3061c916b649a9ae6858a13c61a, type: 3}
+  - {fileID: 1869204717897571242, guid: c898267b83394db489f221569c7cb22d, type: 3}
